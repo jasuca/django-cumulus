@@ -54,6 +54,11 @@ class Command(BaseCommand):
         self.sync_files()
 
     def sync_files(self):
+        #Ask for an API_KEY if not set yet
+        if not self.API_KEY: 
+            print "API_KEY is not defined. Enter API_KEY: ", 
+            self.API_KEY = raw_input()
+            
         self.conn = cloudfiles.get_connection(username = self.USERNAME,
                                               api_key = self.API_KEY,
                                               authurl = self.AUTH_URL,
